@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CRUD_Respository.Models.User>
+@{
+    ViewData["Title"] = "GetUsersList";
+}
+
+<div class="container black-background">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="mb-2">
+                <a class="btn btn-success" asp-controller="User" asp-action="Create">Create New User</a>
+            </div>
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="text-center bg-dark text-light">
+                    <tr>
+                        <th>UserId</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>Pincode</th>
+                        <th>IsActive</th>
+                        <th>Action</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    @foreach (var d in Model)
+                    {
+                        <tr class="text-center">
+                            <td>@d.UserId</td>
+                            <td>@d.Name</td>
+                            <td>@d.Gender</td>
+                            <td>@d.Email</td>
+                            <td>@d.Pincode</td>
+                            <td>
+                                @d.IsActive
+                            </td>
+                        
+
+                            <td>
+                                <a class="btn btn-sm btn-primary m-1" asp-controller="User" asp-action="Edit" asp-route-id="@d.UserId">Edit</a>
+                                <a class="btn btn-sm btn-info m-1" asp-controller="User" asp-action="Details" asp-route-id="@d.UserId">Details</a>
+                                <a class="btn btn-sm btn-danger m-1" asp-controller="User" asp-action="Delete" asp-route-id="@d.UserId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+ 
